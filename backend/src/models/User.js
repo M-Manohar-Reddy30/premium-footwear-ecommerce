@@ -57,6 +57,10 @@ const userSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    profileCompletionPercentage: {
+        type: Number,
+        default: 0,
+    },
 
     wishlist: [
       {
@@ -64,10 +68,26 @@ const userSchema = new mongoose.Schema(
         ref: "Product",
       },
     ],
+
+    cart: [
+  {
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+
+          quantity: {
+            type: Number,
+            default: 1,
+          },
+        },
+      ],
   },
   {
     timestamps: true,
   }
 );
+
+
 
 module.exports = mongoose.model("User", userSchema);

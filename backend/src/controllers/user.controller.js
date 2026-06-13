@@ -34,14 +34,39 @@ const completeProfile = async (req, res) => {
   try {
     const { clerkId } = req.params;
 
-    const user = await User.findOneAndUpdate(
-      { clerkId },
-      {
-        ...req.body,
-        profileCompleted: true,
-      },
-      { new: true }
+    const fields = [
+      req.body.fullName,
+      req.body.mobileNumber,
+      req.body.alternativeMobile,
+      req.body.address,
+      req.body.city,
+      req.body.state,
+      req.body.pincode,
+      req.body.country,
+    ];
+
+    const completedFields = fields.filter(
+      (field) => field && field.trim() !== ""
+    ).length;
+
+    const percentage = Math.round(
+      (completedFields / fields.length) * 100
     );
+
+    const profileCompleted =
+      percentage === 100;
+
+    const user =
+      await User.findOneAndUpdate(
+        { clerkId },
+        {
+          ...req.body,
+          profileCompletionPercentage:
+            percentage,
+          profileCompleted,
+        },
+        { new: true }
+      );
 
     res.json({
       success: true,

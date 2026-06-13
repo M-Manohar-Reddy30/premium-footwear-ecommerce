@@ -23,3 +23,15 @@ export const getUser = async (
 
   return response.data;
 };
+
+export const completeProfile = async (
+  clerkId: string,
+  data: any
+) => {
+  const response = await api.put(
+    `/users/profile/${clerkId}`,
+    data
+  );
+
+  return response.data;
+};
