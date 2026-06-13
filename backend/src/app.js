@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 const app = express();
+const adminRoutes = require("./routes/admin.routes");
 
 app.use(
   cors({
@@ -21,5 +22,7 @@ app.get("/", (req, res) => {
     message: "Premium Footwear API Running",
   });
 });
+
+app.use("/api/admin", adminRoutes);
 
 module.exports = app;
