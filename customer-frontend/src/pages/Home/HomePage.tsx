@@ -1,9 +1,15 @@
+import Hero from "@/components/home/Hero";
+import CategorySection from "@/components/home/CategorySection";
+import FeaturedSection from "@/components/home/FeaturedSection";
+import Newsletter from "@/components/home/Newsletter";
+
 export default function HomePage() {
   return (
-    <section className="min-h-screen flex items-center justify-center">
-      <h1 className="text-5xl font-bold">
-        Premium Footwear
-      </h1>
-    </section>
+    <>
+      <Hero />
+      <CategorySection />
+      <FeaturedSection />
+      <Newsletter />
+    </>
   );
 }

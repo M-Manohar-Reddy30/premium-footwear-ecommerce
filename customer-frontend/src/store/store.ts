@@ -1,8 +1,32 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-export const store = configureStore({
-  reducer: {},
-});
+import authReducer from "./slices/authSlice";
+import userReducer from "./slices/userSlice";
+import themeReducer from "./slices/themeSlice";
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+import productReducer from "./slices/productSlice";
+import categoryReducer from "./slices/categorySlice";
+
+import cartReducer from "./slices/cartSlice";
+import wishlistReducer from "./slices/wishlistSlice";
+
+export const store =
+  configureStore({
+    reducer: {
+      auth: authReducer,
+      user: userReducer,
+      theme: themeReducer,
+
+      products: productReducer,
+      categories: categoryReducer,
+
+      cart: cartReducer,
+      wishlist: wishlistReducer,
+    },
+  });
+
+export type RootState =
+  ReturnType<typeof store.getState>;
+
+export type AppDispatch =
+  typeof store.dispatch;

@@ -8,15 +8,18 @@ import "./index.css";
 
 import { store } from "./store/store";
 import { ThemeProvider } from "./providers/ThemeProvider";
+import AppClerkProvider from "./providers/ClerkProvider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </Provider>
-  </React.StrictMode>
+ <AppClerkProvider>
+    <React.StrictMode>
+        <Provider store={store}>
+          <ThemeProvider>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </ThemeProvider>
+        </Provider>
+      </React.StrictMode>
+  </AppClerkProvider>
 );
