@@ -1,9 +1,14 @@
+import AppRouter from "./routes/AppRouter";
+import useUserSync from "./hooks/useUserSync";
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 
 const app = express();
 const adminRoutes = require("./routes/admin.routes");
+const userRoutes = require("./routes/user.routes");
+
 
 app.use(
   cors({
@@ -24,5 +29,14 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/admin", adminRoutes);
+app.use("/api/users", userRoutes);
 
 module.exports = app;
+
+function App() {
+  useUserSync();
+
+  return <AppRouter />;
+}
+
+export default App;
