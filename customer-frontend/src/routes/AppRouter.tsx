@@ -1,7 +1,10 @@
-import { SITE_NAME } from "@/constants/site";
+import HomePage from "@/pages/Home/HomePage";
+import MainLayout from "@/layouts/MainLayout";
 
-const AppRouter = () => {
-  return <h1>{SITE_NAME}</h1>;
-};
-
-export default AppRouter;
+export default function AppRouter() {
+  return (
+    <MainLayout>
+      <HomePage />
+    </MainLayout>
+  );
+}
